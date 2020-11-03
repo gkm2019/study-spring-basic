@@ -1,9 +1,15 @@
 package hello.demo.domain;
 
-public class Member {
-    private Long id;
-    private String name;
+import javax.persistence.*;
 
+@Entity
+public class Member {
+    
+    //pk설정, auto-incre설정
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
     public Long getId() {
         return id;
     }

@@ -2,8 +2,6 @@ package hello.demo.service;
 
 import hello.demo.domain.Member;
 import hello.demo.repository.MemberRepository;
-import hello.demo.repository.MemoryMemberRepository;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
