@@ -1,6 +1,7 @@
 package hello.demo;
 
 import hello.demo.repository.JdbcMemberRepository;
+import hello.demo.repository.JdbcTemplateMemberRepository;
 import hello.demo.repository.MemberRepository;
 import hello.demo.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class SpringConfig {
 
     @Bean //repository 직접 등록
     public MemberRepository memberRepository(){
-        return new JdbcMemberRepository(dataSource);
+
+        //return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
