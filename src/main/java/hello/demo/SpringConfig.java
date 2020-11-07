@@ -1,16 +1,9 @@
 package hello.demo;
 
-import hello.demo.repository.JdbcMemberRepository;
-import hello.demo.repository.JdbcTemplateMemberRepository;
-import hello.demo.repository.JpaMemberRepository;
 import hello.demo.repository.MemberRepository;
 import hello.demo.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.persistence.EntityManager;
-import javax.sql.DataSource;
 
 /*
  * service, repository
@@ -19,23 +12,26 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    private EntityManager em;
+    //spring data jpa
+    private final MemberRepository memberRepository; //구현체 미리 만들어 놓은것이 자동으로 등록됨
 
-    @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    //생성자 1개니까 Autowired생략 가능하다.
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean //service를 직접 등록
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
-
+/*
+스프링 데이터 jpa는 따로 빈등록 안해도 됨.. 저절로 해줌..
     @Bean //repository 직접 등록
     public MemberRepository memberRepository() {
 
         //return new JdbcMemberRepository(dataSource);
         //return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em); //entityManager필요함
+        //return new JpaMemberRepository(em); //entityManager필요함 : jpa
     }
+ */
 }

@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional //rollback 기능해준다. test 끝나면 트랜잭션 지워줌
 public class MemberServiceIntegrationTest {
 
-
     @Autowired MemberService memberService;
     @Autowired MemberRepository memberRepository;
 
